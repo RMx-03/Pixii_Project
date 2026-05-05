@@ -55,7 +55,9 @@ class CompetitorDiscoveryService:
         soup = BeautifulSoup(response.text, "html.parser")
         urls: list[str] = []
         for anchor in soup.select("a.result__a"):
-            href = anchor.get("href", "")
+            href = anchor.get("href")
+            if not isinstance(href, str):
+                continue
             if "amazon." in href:
                 urls.append(_normalize_amazon_url(href))
             if len(urls) >= limit:
