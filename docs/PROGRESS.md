@@ -17,16 +17,22 @@
 - Frontend production build: Passing
 
 ## Deployment Status
-- Vercel CLI: Installed and authenticated
-- Railway CLI: Installed and authenticated
-- Backend deployment: Complete
-  - Railway service: `aeo-api`
-  - Backend URL: `https://aeo-api-production.up.railway.app`
-  - Health check: Passing (`{"status":"ok"}`)
-- Frontend deployment: Complete (build and deploy successful)
-  - Vercel URL: `https://web-a1go0vn8i-rohit-mishras-projects-4ce013c8.vercel.app`
-  - Current blocker: Vercel SSO deployment protection is enabled for default domain access
-  - Final public-access step pending explicit approval to disable SSO protection
+- Git Repository
+  - Remote: `https://github.com/RMx-03/Pixii_Project.git`
+  - Branch sync: `main` is synced with `origin/main`
+- Vercel (GitHub-based)
+  - New project: `aeo-report-card-web`
+  - Git connection: `RMx-03/Pixii_Project` connected
+  - Environment variables configured:
+    - Production: `NEXT_PUBLIC_API_BASE_URL`
+    - Development: `NEXT_PUBLIC_API_BASE_URL`
+  - Pending: preview env variable can be added once preview branch strategy is finalized
+- Railway (GitHub-based)
+  - New project: `aeo-report-card-github`
+  - Postgres service: created
+  - Blocker: `railway add --repo ...` returns `repo not found`
+  - Likely cause: Railway GitHub app/repo access not granted yet
+  - Next step: grant Railway access to `RMx-03/Pixii_Project`, then create/connect `aeo-api` service from GitHub source
 
 ## Operational Status
 - No leftover project dev/test server processes are running.
