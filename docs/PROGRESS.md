@@ -20,22 +20,32 @@
 - Git Repository
   - Remote: `https://github.com/RMx-03/Pixii_Project.git`
   - Branch sync: `main` is synced with `origin/main`
+  - Deployment commits:
+    - `444733f` add Railway monorepo Dockerfile for API
+    - `6280693` add root `railway.toml` config-as-code for Railway
+    - `5ed235a` add root `vercel.json` monorepo build config for Vercel
 - Vercel (GitHub-based)
   - New project: `aeo-report-card-web`
   - Git connection: `RMx-03/Pixii_Project` connected
+  - Deployment protection:
+    - SSO protection disabled for public access
   - Environment variables configured:
-    - Production: `NEXT_PUBLIC_API_BASE_URL`
-    - Development: `NEXT_PUBLIC_API_BASE_URL`
-  - Git-triggered deployment: verified after pushing commit `0584ad7`
-  - Current production URL: `https://aeo-report-card-gmkj9m97d-rohit-mishras-projects-4ce013c8.vercel.app`
-  - Pending: preview env variable can be added once preview branch strategy is finalized
-  - Pending: disable SSO deployment protection to make URL publicly accessible
+    - Production: `NEXT_PUBLIC_API_BASE_URL=https://aeo-api-production-6c6d.up.railway.app`
+    - Development: `NEXT_PUBLIC_API_BASE_URL=https://aeo-api-production-6c6d.up.railway.app`
+  - Git-triggered production deployment: verified
+  - Stable production URL: `https://aeo-report-card-web.vercel.app`
+  - Status check: HTTP 200 on stable alias
 - Railway (GitHub-based)
   - New project: `aeo-report-card-github`
-  - Postgres service: created
-  - Blocker: `railway add --repo ...` returns `repo not found`
-  - Likely cause: Railway GitHub app/repo access not granted yet
-  - Next step: grant Railway access to `RMx-03/Pixii_Project`, then create/connect `aeo-api` service from GitHub source
+  - Services:
+    - `Postgres` created and healthy
+    - `aeo-api` connected to `RMx-03/Pixii_Project`
+  - Monorepo deployment fix:
+    - `railway.toml` at repository root forces Docker builder with `apps/api/Dockerfile.railway`
+  - Git-triggered deployment: verified
+  - API domain: `https://aeo-api-production-6c6d.up.railway.app`
+  - Health check: `GET /health` returns `{"status":"ok"}`
 
 ## Operational Status
-- No leftover project dev/test server processes are running.
+- Stuck Railway CLI process from earlier linking attempts was stopped.
+- No active project dev server process is required for deployment validation.
