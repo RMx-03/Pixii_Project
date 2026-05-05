@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AEOProviderOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "provider_name",
+    "model",
+    "answered_query",
+    "overall_verdict",
+    "recommended_products",
+    "sentiment_score",
+    "relevance_score",
+    "trust_score",
+    "evidence_snippets",
+    "raw_answer_excerpt",
+    "suggested_improvements"
+  ],
+  "properties": {
+    "provider_name": {
+      "type": "string",
+      "enum": ["openai", "anthropic", "gemini"]
+    },
+    "model": {
+      "type": "string",
+      "minLength": 1
+    },
+    "answered_query": {
+      "type": "string",
+      "minLength": 1
+    },
+    "overall_verdict": {
+      "type": "string",
+      "enum": ["recommended", "not_recommended", "uncertain"]
+    },
+    "recommended_products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "url", "reason", "rank_hint"],
+        "properties": {
+          "name": { "type": "string", "minLength": 1 },
+          "url": { "type": ["string", "null"] },
+          "reason": { "type": "string", "minLength": 1 },
+          "rank_hint": { "type": ["integer", "null"], "minimum": 1 }
+        }
+      }
+    },
+    "sentiment_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "relevance_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "trust_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "evidence_snippets": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "raw_answer_excerpt": {
+      "type": "string",
+      "minLength": 1
+    },
+    "suggested_improvements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "bullets", "faqs"],
+      "properties": {
+        "title": { "type": "string", "minLength": 1 },
+        "bullets": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        },
+        "faqs": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "minItems": 1
+        }
+      }
+    }
+  }
+}

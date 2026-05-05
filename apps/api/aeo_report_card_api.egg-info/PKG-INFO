@@ -1,0 +1,21 @@
+Metadata-Version: 2.4
+Name: aeo-report-card-api
+Version: 1.0.0
+Summary: AEO Report Card API
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+Requires-Dist: fastapi<0.116.0,>=0.115.0
+Requires-Dist: uvicorn<0.31.0,>=0.30.6
+Requires-Dist: httpx<0.28.0,>=0.27.2
+Requires-Dist: pydantic-settings<3.0.0,>=2.5.2
+Requires-Dist: sqlalchemy<3.0.0,>=2.0.35
+Requires-Dist: psycopg[binary]<4.0.0,>=3.2.3
+Requires-Dist: alembic<2.0.0,>=1.13.3
+Requires-Dist: python-slugify<9.0.0,>=8.0.4
+Requires-Dist: beautifulsoup4<5.0.0,>=4.12.3
+Requires-Dist: fpdf2<3.0.0,>=2.7.9
+Provides-Extra: dev
+Requires-Dist: pytest<9.0.0,>=8.3.3; extra == "dev"
+Requires-Dist: pytest-asyncio<0.25.0,>=0.24.0; extra == "dev"
+Requires-Dist: ruff<0.8.0,>=0.7.0; extra == "dev"
+Requires-Dist: mypy<2.0.0,>=1.11.2; extra == "dev"

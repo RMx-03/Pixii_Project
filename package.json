@@ -1,0 +1,27 @@
+{
+  "name": "aeo-report-card",
+  "private": true,
+  "version": "1.0.0",
+  "description": "AEO Report Card monorepo for Pixii.ai assessment",
+  "workspaces": [
+    "apps/web",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev:web": "npm run dev --workspace @aeo/web",
+    "build:web": "npm run build --workspace @aeo/web",
+    "start:web": "npm run start --workspace @aeo/web",
+    "lint:web": "npm run lint --workspace @aeo/web",
+    "typecheck:web": "npm run typecheck --workspace @aeo/web",
+    "test:web": "npm run test --workspace @aeo/web",
+    "check:web": "npm run lint:web && npm run typecheck:web && npm run test:web",
+    "lint:api": "python -m ruff check apps/api",
+    "typecheck:api": "python -m mypy apps/api/app",
+    "test:api": "python -m pytest apps/api/tests -q",
+    "check:api": "npm run lint:api && npm run typecheck:api && npm run test:api"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
+
