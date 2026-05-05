@@ -26,7 +26,10 @@
   - Environment variables configured:
     - Production: `NEXT_PUBLIC_API_BASE_URL`
     - Development: `NEXT_PUBLIC_API_BASE_URL`
+  - Git-triggered deployment: verified after pushing commit `0584ad7`
+  - Current production URL: `https://aeo-report-card-gmkj9m97d-rohit-mishras-projects-4ce013c8.vercel.app`
   - Pending: preview env variable can be added once preview branch strategy is finalized
+  - Pending: disable SSO deployment protection to make URL publicly accessible
 - Railway (GitHub-based)
   - New project: `aeo-report-card-github`
   - Postgres service: created
